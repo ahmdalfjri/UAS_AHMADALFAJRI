@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+    "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+    name="laporan_gym" pageWidth="1000" pageHeight="842" columnWidth="960" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="11111111-2222-3333-4444-555555555555">
+
+    <queryString>
+        <![CDATA[SELECT * FROM gymdb]]>
+    </queryString>
+
+    <field name="id" class="java.lang.String"/>
+    <field name="nama" class="java.lang.String"/>
+    <field name="email" class="java.lang.String"/>
+    <field name="no_hp" class="java.lang.String"/>
+    <field name="tipe_member" class="java.lang.String"/>
+    <field name="trainer" class="java.lang.String"/>
+    <field name="harga" class="java.lang.Double"/>
+    <field name="masa_aktif" class="java.lang.Integer"/>
+    <field name="metode_pembayaran" class="java.lang.String"/>
+
+    <title>
+        <band height="50">
+            <staticText>
+                <reportElement x="0" y="0" width="960" height="30"/>
+                <textElement textAlignment="Center">
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Laporan Pendaftaran Member Gym]]></text>
+            </staticText>
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height="20">
+            <staticText><reportElement x="0" y="0" width="40" height="20"/><text><![CDATA[ID]]></text></staticText>
+            <staticText><reportElement x="40" y="0" width="120" height="20"/><text><![CDATA[Nama]]></text></staticText>
+            <staticText><reportElement x="160" y="0" width="160" height="20"/><text><![CDATA[Email]]></text></staticText>
+            <staticText><reportElement x="320" y="0" width="100" height="20"/><text><![CDATA[No HP]]></text></staticText>
+            <staticText><reportElement x="420" y="0" width="80" height="20"/><text><![CDATA[Tipe]]></text></staticText>
+            <staticText><reportElement x="500" y="0" width="100" height="20"/><text><![CDATA[Trainer]]></text></staticText>
+            <staticText><reportElement x="600" y="0" width="100" height="20"/><text><![CDATA[Harga]]></text></staticText>
+            <staticText><reportElement x="700" y="0" width="80" height="20"/><text><![CDATA[Masa Aktif]]></text></staticText>
+            <staticText><reportElement x="780" y="0" width="180" height="20"/><text><![CDATA[Metode Pembayaran]]></text></staticText>
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="20">
+            <textField><reportElement x="0" y="0" width="40" height="20"/><textFieldExpression><![CDATA[$F{id}]]></textFieldExpression></textField>
+            <textField><reportElement x="40" y="0" width="120" height="20"/><textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression></textField>
+            <textField><reportElement x="160" y="0" width="160" height="20"/><textFieldExpression><![CDATA[$F{email}]]></textFieldExpression></textField>
+            <textField><reportElement x="320" y="0" width="100" height="20"/><textFieldExpression><![CDATA[$F{no_hp}]]></textFieldExpression></textField>
+            <textField><reportElement x="420" y="0" width="80" height="20"/><textFieldExpression><![CDATA[$F{tipe_member}]]></textFieldExpression></textField>
+            <textField><reportElement x="500" y="0" width="100" height="20"/><textFieldExpression><![CDATA[$F{trainer}]]></textFieldExpression></textField>
+            <textField><reportElement x="600" y="0" width="100" height="20"/><textFieldExpression><![CDATA["Rp " + String.format("%,.0f", $F{harga})]]></textFieldExpression></textField>
+            <textField><reportElement x="700" y="0" width="80" height="20"/><textFieldExpression><![CDATA[$F{masa_aktif} + " Bulan"]]></textFieldExpression></textField>
+            <textField><reportElement x="780" y="0" width="180" height="20"/><textFieldExpression><![CDATA[$F{metode_pembayaran}]]></textFieldExpression></textField>
+        </band>
+    </detail>
+
+</jasperReport>
